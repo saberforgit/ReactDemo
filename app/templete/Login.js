@@ -35,21 +35,26 @@ class Login extends Component {
                                 this.setState({name: name})
                             }} value={this.state.name}
                                        style={login.input_name}
-                                       placeholder="请输入姓名"/>
+                                       placeholder="请输入姓名"
+                                       underlineColorAndroid="transparent"/>
                             <TextInput onChangeText={(passwd) => {
                                 this.setState({passwd: passwd})
                             }} value={this.state.passwd}
                                        style={login.input_passwd}
                                        placeholder="请输入密码"
+                                       keyboardType="numeric"
+                                       underlineColorAndroid="transparent"
+                                       secureTextEntry={true}
                                        onSubmitEditing={this._onPressButton.bind(this)}/>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.SelectableBackground()}
+                                onPress={this._onPressButton.bind(this)}>
+                                <View style={login.input_submmit}>
+                                    <Text style={login.input_submit_text}>登陆</Text>
+                                </View>
+                            </TouchableNativeFeedback>
                         </View>
-                        <TouchableNativeFeedback
-                            background={TouchableNativeFeedback.SelectableBackground()}
-                            onPress={this._onPressButton.bind(this)}>
-                            <View style={login.input_submmit}>
-                                <Text style={login.input_submit_text}>登陆</Text>
-                            </View>
-                        </TouchableNativeFeedback>
+
                     </View>
                 </View>
             </Image>
@@ -86,14 +91,17 @@ const login = StyleSheet.create({
     input_area: {
         margin: 5,
         justifyContent: 'center',
-        backgroundColor: 'white'
     },
     input_name: {
+        backgroundColor: 'white',
         margin: 5,
+        paddingLeft: 10,
         // borderBottomWidth: 1,
     },
     input_passwd: {
         margin: 5,
+        paddingLeft: 10,
+        backgroundColor: 'white'
         // borderBottomWidth: 1,
     },
     input_submmit: {

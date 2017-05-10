@@ -36,7 +36,7 @@ export default class Main extends Component {
                         renderSelectedIcon={() => <Image style={styles.icon}
                                                          source={require("../img/main/home_press.png")}/>}
                         onPress={() => this.setState({selectedTab: '首页'})}>
-                        <Home/>
+                        <Home navigator={this.props.navigator}/>
                     </TabNavigator.Item>
 
                     <TabNavigator.Item

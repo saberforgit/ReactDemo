@@ -25,18 +25,23 @@ class Login extends Component {
 
 
     render() {
-        let path = {src: require('../img/login_bg.jpg')}
+        let path = {src: require('../img/login_bg.jpg')};
         return (
             <Image source={path.src} style={login.bg}>
                 <View style={login.container}>
                     <View style={login.input}>
                         <View style={login.input_area}>
+                            <Image style={login.input_header} source={require('../img/account_login.png')}/>
                             <TextInput onChangeText={(name) => {
                                 this.setState({name: name})
                             }} value={this.state.name}
                                        style={login.input_name}
                                        placeholder="请输入姓名"
                                        underlineColorAndroid="transparent"/>
+                        </View>
+                        <View style={login.input_area}>
+                            <Image style={login.input_header} source={require('../img/passwd_login.png')}
+                                   resizeMode="contain"/>
                             <TextInput onChangeText={(passwd) => {
                                 this.setState({passwd: passwd})
                             }} value={this.state.passwd}
@@ -46,15 +51,14 @@ class Login extends Component {
                                        underlineColorAndroid="transparent"
                                        secureTextEntry={true}
                                        onSubmitEditing={this._onPressButton.bind(this)}/>
-                            <TouchableNativeFeedback
-                                background={TouchableNativeFeedback.SelectableBackground()}
-                                onPress={this._onPressButton.bind(this)}>
-                                <View style={login.input_submmit}>
-                                    <Text style={login.input_submit_text}>登陆</Text>
-                                </View>
-                            </TouchableNativeFeedback>
                         </View>
-
+                        <TouchableNativeFeedback
+                            background={TouchableNativeFeedback.SelectableBackground()}
+                            onPress={this._onPressButton.bind(this)}>
+                            <View style={login.input_submmit}>
+                                <Text style={login.input_submit_text}>登陆</Text>
+                            </View>
+                        </TouchableNativeFeedback>
                     </View>
                 </View>
             </Image>
@@ -62,7 +66,6 @@ class Login extends Component {
     }
 
     _onPressButton() {
-        // Alert.alert("111111","name" + this.state.name + "+ passwd:" + this.state.passwd);
         this.props.navigator.push({
             component: Main,
             passProps: {
@@ -86,27 +89,33 @@ const login = StyleSheet.create({
     input: {
         justifyContent: 'center',
         width: '80%',
-        borderRadius: 5,
     },
     input_area: {
         margin: 5,
-        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+    input_header: {
+        marginLeft: 5,
+        width: 35,
+        height: 30
     },
     input_name: {
-        backgroundColor: 'white',
-        margin: 5,
+        flex: 1,
         paddingLeft: 10,
         // borderBottomWidth: 1,
     },
     input_passwd: {
-        margin: 5,
+        flex: 1,
         paddingLeft: 10,
-        backgroundColor: 'white'
         // borderBottomWidth: 1,
     },
     input_submmit: {
         margin: 5,
-        height: 40,
+        marginTop: 20,
+        height: 45,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'green'

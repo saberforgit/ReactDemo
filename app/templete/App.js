@@ -7,10 +7,13 @@ import {
     StyleSheet,
     Text,
     View,
+    BackAndroid,
+    Platform,
     TouchableOpacity
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components';
 import Splash from './Splash';
+import BackAndroidTool from './model/BackAndroidTool';
 class App extends Component {
 
     /**
@@ -45,5 +48,6 @@ class App extends Component {
                 renderScene={this.renderScene}/>
         );
     }
+
 }
 module.exports = App;

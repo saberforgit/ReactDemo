@@ -31,10 +31,12 @@ class HomeListView extends Component {
             <ListView
                 style={homeListView.listView}
                 dataSource={this.state.dataSource}
+                // renderSectionHeader={this._renderHeader}
                 renderRow={this._renderRow.bind(this)}
-                renderHeader={this._renderHeader}
-                renderSeparator={this._renderSeparator}
-                initialListSize={10}
+                // stickySectionHeadersEnabled={true}
+                // renderHeader={this._renderHeader}
+                // renderSeparator={this._renderSeparator}
+                initialListSize={8}
             />
         );
     }
@@ -75,9 +77,11 @@ class HomeListView extends Component {
      * @private
      */
     _renderHeader() {
-        <View>
-            <Text>My movies list!!!</Text>
-        </View>
+        return (
+            <View>
+                <Text style={homeListView.title}>My movies list!!!</Text>
+            </View>
+        );
     }
 
     /**
@@ -85,9 +89,10 @@ class HomeListView extends Component {
      * @private
      */
     _renderSeparator(sectionId, rowId) {
-        <View
-            style={homeListView.separator}
-            key={sectionId + rowId}></View>
+        return (
+            <View
+                style={homeListView.separator}/>
+        );
     }
 }
 
@@ -115,6 +120,9 @@ const homeListView = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 25,
+    },
+    title: {
+        textAlign: 'center',
     },
     separator: {
         height: 1,

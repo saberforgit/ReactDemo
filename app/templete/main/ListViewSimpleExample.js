@@ -16,8 +16,6 @@ var {
     View,
 } = ReactNative;
 
-var UIExplorerPage = require('./UIExplorerPage');
-
 var ListViewSimpleExample = React.createClass({
     statics: {
         title: '<ListView>',
@@ -37,19 +35,14 @@ var ListViewSimpleExample = React.createClass({
         this._pressData = {};
     },
 
-    render: function () {
+    render () {
         return (
-            <UIExplorerPage
-                title={this.props.navigator ? null : '<ListView>'}
-                noSpacer={true}
-                noScroll={true}>
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={this._renderRow}
-                    renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
-                    renderSeparator={this._renderSeperator}
-                />
-            </UIExplorerPage>
+            <ListView
+                dataSource={this.state.dataSource}
+                renderRow={this._renderRow}
+                // renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                renderSeparator={this._renderSeperator}
+            />
         );
     },
 
@@ -94,10 +87,10 @@ var ListViewSimpleExample = React.createClass({
     _renderSeperator: function (sectionID: number, rowID: number, adjacentRowHighlighted: bool) {
         return (
             <View
-                key={`${sectionID}-${rowID}`}
+               // key={`${sectionID}-${rowID}`}
                 style={{
-                    height: adjacentRowHighlighted ? 4 : 1,
-                    backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+                    height:1,
+                    // backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
                 }}
             />
         );

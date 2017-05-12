@@ -14,6 +14,8 @@ import {
 import {Navigator} from 'react-native-deprecated-custom-components';
 import Root from './Root';
 import Splash from './Splash';
+import Main from './Main';
+import ListR from './main/ListViewSimpleExample';
 class App extends Component {
 
     /**

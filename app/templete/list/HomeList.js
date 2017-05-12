@@ -40,7 +40,6 @@ class HomeListView extends Component {
     }
 
     _jumpToDetails(movie) {
-        ToastAndroid.show(JSON.stringify(movie), ToastAndroid.SHORT);
         this.props.navigator.push({
             component: SingerDetails,
             passProps: {

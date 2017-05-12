@@ -7,7 +7,7 @@ import {
     Image,
     Alert,
     Platform,
-    BackAndroid,
+    BackHandler,
     ToastAndroid,
     StyleSheet
 } from 'react-native';
@@ -79,7 +79,7 @@ class Splash extends Component {
     // 监听返回键事件
     addBackAndroidListener(navigator) {
         if (Platform.OS === 'android') {
-            BackAndroid.addEventListener('hardwareBackPress', () => {
+            BackHandler.addEventListener('hardwareBackPress', () => {
                 return this.onBackAndroid(navigator);
             });
         }
@@ -88,7 +88,7 @@ class Splash extends Component {
     // 移除监听
     removeBackAndroidListener() {
         if (Platform.OS === 'android') {
-            BackAndroid.removeEventListener('hardwareBackPress', () => {
+            BackHandler.removeEventListener('hardwareBackPress', () => {
             });
         }
     }

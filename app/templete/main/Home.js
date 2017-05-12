@@ -6,7 +6,7 @@ import {
     Alert,
     Text,
 } from 'react-native';
-import Http from '../http/http';
+import Http from '../utils/http';
 import HomeListView from '../list/HomeList';
 import ProgressBar from '../model/ProgressBar';
 class Home extends Component {

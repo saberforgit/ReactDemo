@@ -12,8 +12,8 @@ import {
     TouchableOpacity
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components';
+import Root from './Root';
 import Splash from './Splash';
-import BackAndroidTool from './model/BackAndroidTool';
 class App extends Component {
 
     /**
@@ -36,18 +36,23 @@ class App extends Component {
         if (route.type == 'Bottom') {
             return Navigator.SceneConfigs.FloatFromBottom; // 底部弹出
         }
-        return Navigator.SceneConfigs.PushFromRight; // 右侧弹出
+        return Navigator.SceneConfigs.FadeAndroid; // 右侧弹出
     }
 
     render() {
         return (
             <Navigator
-                style={{flex: 1}}
-                initialRoute={{component: Splash}}
+                style={app.root}
+                initialRoute={{component: Root}}
                 configureScene={this.configureScene}
                 renderScene={this.renderScene}/>
         );
     }
 
 }
+const app = StyleSheet.create({
+    root: {
+        flex: 1,
+    }
+});
 module.exports = App;

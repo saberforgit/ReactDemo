@@ -9,6 +9,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import Home from './main/Home';
 import Application from './main/Application';
 import Personal from  './main/Personal';
+import ListEx from  './main/ListViewSimpleExample';
 export default class Main extends Component {
 
     constructor(props) {
@@ -48,7 +49,7 @@ export default class Main extends Component {
                         renderSelectedIcon={() => <Image style={styles.icon}
                                                          source={require("../img/main/app_press.png")}/>}
                         onPress={() => this.setState({selectedTab: 'Application'})}>
-                        <Application />
+                        <ListEx />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === '我的'}

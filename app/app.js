@@ -12,10 +12,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components';
-import Root from './Root';
-import Splash from './Splash';
-import Main from './Main';
-import ListR from './main/ListViewSimpleExample';
+import Root from './templete/root';
+import Splash from './templete/main/login/Splash';
+import Main from './templete/main/main';
 class App extends Component {
 
     /**

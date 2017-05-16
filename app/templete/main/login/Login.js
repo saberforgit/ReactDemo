@@ -12,7 +12,7 @@ import {
     Alert,
     StyleSheet
 } from 'react-native';
-import Main from './Main'
+import Main from '../main'
 class Login extends Component {
 
     constructor(props) {
@@ -25,13 +25,13 @@ class Login extends Component {
 
 
     render() {
-        let path = {src: require('../img/login_bg.jpg')};
+        let path = {src: require('../../../img/login_bg.jpg')};
         return (
             <Image source={path.src} style={login.bg}>
                 <View style={login.container}>
                     <View style={login.input}>
                         <View style={login.input_area}>
-                            <Image style={login.input_header} source={require('../img/account_login.png')}/>
+                            <Image style={login.input_header} source={require('../../../img/account_login.png')}/>
                             <TextInput onChangeText={(name) => {
                                 this.setState({name: name})
                             }} value={this.state.name}
@@ -40,7 +40,7 @@ class Login extends Component {
                                        underlineColorAndroid="transparent"/>
                         </View>
                         <View style={login.input_area}>
-                            <Image style={login.input_header} source={require('../img/passwd_login.png')}
+                            <Image style={login.input_header} source={require('../../../img/passwd_login.png')}
                                    resizeMode="contain"/>
                             <TextInput onChangeText={(passwd) => {
                                 this.setState({passwd: passwd})
@@ -95,6 +95,7 @@ const login = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
+        borderRadius: 5,
         backgroundColor: 'white',
     },
     input_header: {
@@ -104,12 +105,12 @@ const login = StyleSheet.create({
     },
     input_name: {
         flex: 1,
-        paddingLeft: 10,
+        paddingLeft: 15,
         // borderBottomWidth: 1,
     },
     input_passwd: {
         flex: 1,
-        paddingLeft: 10,
+        paddingLeft: 15,
         // borderBottomWidth: 1,
     },
     input_submmit: {
@@ -118,6 +119,7 @@ const login = StyleSheet.create({
         height: 45,
         justifyContent: 'center',
         alignItems: 'center',
+        borderRadius: 5,
         backgroundColor: 'green'
     },
     input_submit_text: {

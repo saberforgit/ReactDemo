@@ -15,9 +15,9 @@ import Login from './Login';
 
 import ViewPager  from 'react-native-viewpager';
 const BANNER_IMGS = [
-    {src: require('../img/main/home_bg.jpg')},
-    {src: require('../img/main/person_bg.jpg')},
-    {src: require('../img/main/app_bg.jpg')}
+    {src: require('../../../img/main/home_bg.jpg')},
+    {src: require('../../../img/main/person_bg.jpg')},
+    {src: require('../../../img/main/app_bg.jpg')}
 ];
 
 class Splash extends Component {

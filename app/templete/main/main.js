@@ -6,9 +6,9 @@ import {
     Image
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import Home from './main/Home';
-import Application from './main/Application';
-import Personal from  './main/Personal';
+import Home from './home/home';
+import CenterTab from './center/center';
+import Personal from  './personal/personal';
 export default class Main extends Component {
 
     constructor(props) {
@@ -23,7 +23,7 @@ export default class Main extends Component {
             <View style={styles.container}>
                 <ToolbarAndroid
                     actions={toolbarActions}
-                    navIcon={require('../img/main/setting.png') }
+                    navIcon={require('../../img/main/setting.png') }
                     style={styles.toolbar}
                     title={this.state.selectedTab}></ToolbarAndroid>
                 <TabNavigator>
@@ -32,9 +32,9 @@ export default class Main extends Component {
                         title="首页"
                         titleStyle={styles.tabText}
                         selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => <Image style={styles.icon} source={require("../img/main/home_nor.png")}/>}
+                        renderIcon={() => <Image style={styles.icon} source={require("../../img/main/home_nor.png")}/>}
                         renderSelectedIcon={() => <Image style={styles.icon}
-                                                         source={require("../img/main/home_press.png")}/>}
+                                                         source={require("../../img/main/home_press.png")}/>}
                         onPress={() => this.setState({selectedTab: '首页'})}>
                         <Home navigator={this.props.navigator}/>
                     </TabNavigator.Item>
@@ -44,20 +44,21 @@ export default class Main extends Component {
                         title="Application"
                         titleStyle={styles.tabText}
                         selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => <Image style={styles.icon} source={require("../img/main/app_nor.png")}/>}
+                        renderIcon={() => <Image style={styles.icon} source={require("../../img/main/app_nor.png")}/>}
                         renderSelectedIcon={() => <Image style={styles.icon}
-                                                         source={require("../img/main/app_press.png")}/>}
+                                                         source={require("../../img/main/app_press.png")}/>}
                         onPress={() => this.setState({selectedTab: 'Application'})}>
-                        <Application />
+                        <CenterTab  navigator={this.props.navigator}/>
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === '我的'}
                         title="我的"
                         titleStyle={styles.tabText}
                         selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => <Image style={styles.icon} source={require("../img/main/person_nor.png")}/>}
+                        renderIcon={() => <Image style={styles.icon}
+                                                 source={require("../../img/main/person_nor.png")}/>}
                         renderSelectedIcon={() => <Image style={styles.icon}
-                                                         source={require("../img/main/person_press.png")}/>}
+                                                         source={require("../../img/main/person_press.png")}/>}
                         onPress={() => this.setState({selectedTab: '我的'})}>
                         <Personal />
                     </TabNavigator.Item>
@@ -67,10 +68,10 @@ export default class Main extends Component {
     }
 }
 let toolbarActions = [
-    {title: 'Create', icon: require('../img/voice.png')},
+    {title: 'Create', icon: require('../../img/voice.png')},
     {title: 'Remove'},
     {title: 'Add'},
-    {title: 'Settings', icon: require('../img/voice.png'), show: 'always'},
+    {title: 'Settings', icon: require('../../img/voice.png'), show: 'always'},
 ];
 let styles = StyleSheet.create({
     toolbar: {

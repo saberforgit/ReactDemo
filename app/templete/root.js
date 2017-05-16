@@ -11,8 +11,8 @@ import {
     ToastAndroid,
     StyleSheet
 } from 'react-native';
-import Login from './Login';
-import Splash from './Splash';
+import Login from './main/login/Login';
+import Splash from './main/login/Splash';
 import AppStorage from './utils/storage';
 import AppCodes from './const/codes';
 class Root extends Component {
@@ -41,8 +41,9 @@ class Root extends Component {
     render() {
         if (this.state.isFirstLanch) {
             return this._initFirstLanch();
+        } else {
+            return this._initNoFirstLanch();
         }
-        return this._initNoFirstLanch();
     }
 
     //跳转登录

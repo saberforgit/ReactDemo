@@ -10,22 +10,22 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-class Application extends Component {
+class Personal extends Component {
 
 
     render() {
         return (
-            <Image style={app.img_bg} source={require('../../img/main/app_bg.jpg')}>
+            <Image style={personal.img_bg} source={require('../../../img/main/person_bg.jpg')}>
 
             </Image>
         );
     }
 }
 
-const app = StyleSheet.create({
+const personal = StyleSheet.create({
     img_bg: {
         width: '100%',
         height: '100%'
     }
 });
-module.exports = Application;
+module.exports = Personal;

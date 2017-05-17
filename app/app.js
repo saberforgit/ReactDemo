@@ -1,7 +1,7 @@
 /**
  * Created by wangxf on 2017/5/8.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -11,10 +11,11 @@ import {
     Platform,
     TouchableOpacity
 } from 'react-native';
-import {Navigator} from 'react-native-deprecated-custom-components';
+import { Navigator } from 'react-native-deprecated-custom-components';
 import Root from './js/root';
 import Splash from './js/main/login/Splash';
 import Main from './js/main/main';
+import Center from './js/main/center/center';
 class App extends Component {
 
     /**
@@ -44,9 +45,9 @@ class App extends Component {
         return (
             <Navigator
                 style={app.root}
-                initialRoute={{component: Root}}
+                initialRoute={{ component: Root }}
                 configureScene={this.configureScene}
-                renderScene={this.renderScene}/>
+                renderScene={this.renderScene} />
         );
     }
 

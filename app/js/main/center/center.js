@@ -1,21 +1,17 @@
 /**
  * Created by wangxf on 2017/5/8.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-    AppRegistry,
-    Image,
-    ListView,
-    TouchableHighlight,
-    StyleSheet,
-    Text,
-    Alert,
-    ScrollView,
+    SectionList,
     View,
-    TouchableNativeFeedback
+    Text
 } from 'react-native';
-import MasonryFirst from './masonry';
-import ViewPager  from 'react-native-viewpager';
+var ViewPagers = require('../../model/viewpager');
+var MenuList = require('../../model/MenuList');
+var HomeListView = require('../../list/HomeList');
+var ProgressBar = require('../../model/ProgressBar');
+import Http from '../../utils/http';
 var tabDatas = {
     "tabs": [
         {
@@ -66,119 +62,69 @@ var imgs = {
         }
     ]
 };
-const BANNER_IMGS = [
-    {src: require('../../../img/main/home_bg.jpg')},
-    {src: require('../../../img/main/person_bg.jpg')},
-    {src: require('../../../img/main/app_bg.jpg')}
-];
 class Center extends Component {
-
-    // 构造
     constructor(props) {
-        super(props);
-        // 初始状态
-        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        var dataSource = new ViewPager.DataSource({
-            pageHasChanged: (p1, p2) => p1 !== p2,
-        });
+        super(props)
         this.state = {
-            dataSource: ds.cloneWithRows(tabDatas.tabs),
-            imgs: dataSource.cloneWithPages(imgs.cards)
-        };
+            isLoading: true,
+            moviesData: null
+        }
+    }
+
+    componentDidMount() {
+        this.getMovies();
     }
 
     render() {
-        return (
-            <View style={styles.continers}>
-                <ViewPager
-                    style={styles.viewpager}
-                    dataSource={this.state.imgs}
-                    renderPage={this._renderPage}
-                    isLoop={true}
-                    autoPlay={true}/>
+        var sections = [];
+        var viewPagerCard = <ViewPagers navigator={this.props.navigator} data={imgs.cards} />;
+        var menuListCard = <MenuList navigator={this.props.navigator} data={tabDatas.tabs} />;
+        var movieList = null;
+        if (this.state.isLoading) {
+            movieList = <ProgressBar />;
+        } else {
+            movieList = <HomeListView sourceData={this.state.moviesData} navigator={this.props.navigator} />;
+        };
 
-                <ListView
-                    initialListSize={6}
-                    contentContainerStyle={styles.list_tab}
-                    dataSource={this.state.dataSource}
-                    renderRow={this._renderRow.bind(this)}
-                />
+        var cards = [];
+        cards.push({
+            card: viewPagerCard,
+        });
+        cards.push({
+            card: menuListCard,
+        });
+        cards.push({
+            card: movieList,
+        });
+        sections.push({ key: 0, data: cards });
+        return (
+            <View style={{ flex: 1 }}>
+                <SectionList
+                    renderItem={this._renderItem}
+                    keyExtractor={this._extraUniqueKey}
+                    sections={sections} />
             </View>
-
         );
     }
 
-    _renderRow(tab) {
-        return (
-            <TouchableHighlight underlayColor="white" onPress={this._tabPress.bind(this)}>
-                <View>
-                    <View style={styles.row}>
-                        <Image style={styles.thumb} source={tab.img}/>
-                        <Text style={styles.text}>
-                            {tab.title}
-                        </Text>
-                    </View>
-                </View>
-            </TouchableHighlight>
-        );
+    _extraUniqueKey(item, index) {
+        return "index" + index + item;
     }
-
-    _renderPage(data) {
-        return (
-            <Image
-                source={data.img}
-                style={styles.page}/>
-        );
+    _renderItem(info) {
+        return info.item.card;
     }
-
-    _tabPress() {
-        this.props.navigator.push({
-            component: MasonryFirst,
+    getMovies() {
+        var url = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
+        // this.setState({
+        // isLoading: false,
+        // moviesData: require('../../../data/movies.json').movies
+        // });
+        Http.getJson(url, (moviesRes) => {
+            this.setState({
+                isLoading: false,
+                moviesData: moviesRes.movies
+            });
         });
     }
-}
-
-
-const styles = StyleSheet.create({
-    continers: {
-        flex: 1,
-    },
-    list_hh: {
-        flex: 1,
-        width: '100%',
-    },
-    list_tab: {
-        marginTop: 5,
-        padding: 3,
-        backgroundColor: '#e9e9e9',
-        justifyContent: 'space-around',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
-    },
-    row: {
-        justifyContent: 'center',
-        padding: 5,
-        margin: 3,
-        width: 85,
-        height: 85,
-        alignItems: 'center',
-    },
-    thumb: {
-        width: 45,
-        height: 45
-    },
-    text: {
-        flex: 1,
-        marginTop: 5,
-        fontWeight: 'bold'
-    },
-    page: {
-        flex: 1,
-        height: 400,
-    },
-    viewpager: {
-        height: 400,
-        flex: 1
-    }
-});
+};
 module.exports = Center;

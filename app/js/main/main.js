@@ -49,7 +49,7 @@ class Main extends Component {
                         renderSelectedIcon={() => <Image style={styles.icon}
                             source={require("../../img/main/app_press.png")} />}
                         onPress={() => this.setState({ selectedTab: 'Application' })}>
-                        <SectionListTs navigator={this.props.navigator} />
+                        <CenterTab navigator={this.props.navigator} />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === '我的'}

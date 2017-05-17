@@ -35,6 +35,7 @@ var imgs = {
   ]
 };
 import ViewPager from 'react-native-viewpager';
+var Splash = require('../login/Splash');
 class SectionListTs extends Component {
 
 
@@ -48,9 +49,7 @@ class SectionListTs extends Component {
       imgs: dataSource.cloneWithPages(imgs.cards)
     };
   }
-  _renderItem = (section) => {
-    return section;
-  }
+
 
   _renderPage(data) {
     return (
@@ -59,30 +58,43 @@ class SectionListTs extends Component {
         style={styles.page} />
     );
   }
+
+  _renderItem(info) {
+    return info.item.card;
+  }
   _sectionComp = (info) => {
-    var txt = 'key:' + info.section.key;
     return <Text
-      style={{ height: 20, textAlign: 'center', textAlignVertical: 'center', backgroundColor: 'black', color: 'white', fontSize: 30 }}>{txt}</Text>
+      style={{ height: 30, textAlign: 'center', textAlignVertical: 'center', backgroundColor: 'gray', color: 'white', fontSize: 20 }}>{info.section.key}</Text>
   }
 
   render() {
     var sections = [];
-    sections.push({key: 0, data: <ViewPager
-        style={styles.viewpager}
-        dataSource={this.state.imgs}
-        renderPage={this._renderPage}
-        isLoop={true}
-        autoPlay={true} />
+    var page = <ViewPager
+      style={styles.viewpager}
+      dataSource={this.state.imgs}
+      renderPage={this._renderPage}
+      isLoop={true}
+      autoPlay={true} />;
+    var cards = [];
+    cards.push({
+      card: page,
     });
+    sections.push({ key: "ViewPager", data: cards});
 
     return (
       <View style={{ flex: 1 }}>
         <SectionList
           renderSectionHeader={this._sectionComp}
-          renderPage={this._renderItem}
+          renderItem={this._renderItem}
           sections={sections} />
       </View>
     );
+  }
+  _extraUniqueKey(item, index) {
+    return "index" + index + item;
+  }
+  _renderViewPager() {
+    return (<Text>AAAAAAAAAAAAAAAAAA</Text>);
   }
 };
 

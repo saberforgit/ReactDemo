@@ -117,15 +117,12 @@ class Root extends Component {
                 case 'Root':
                     BackHandler.exitApp();
                     return false;
-                    break;
                 case 'Login':
                     BackHandler.exitApp();
                     return false;
-                    break;
                 case 'Main':
                     BackHandler.exitApp();
                     return false;
-                    break;
             }
             if (top.ignoreBack || top.component.ignoreBack) {
                 // 路由或组件上决定这个界面忽略back键

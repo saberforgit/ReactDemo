@@ -6,5 +6,5 @@
 'use strict';
 
 const { AppRegistry } = require('react-native');
-const App = require('./app/templete/App');
+const App = require('./app/app');
 AppRegistry.registerComponent('ReactDemo', () => App);

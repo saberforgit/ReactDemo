@@ -1,0 +1,120 @@
+{
+  "sections": [
+    {
+      "key": "功能列表",
+      "data": [
+        {
+          "img": "../../../img/main/center/icon/1108187.png",
+          "title": "语音控制"
+        },
+        {
+          "img": "../../../img/main/center/icon/1110055.png",
+          "title": "个人信息"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126308.png",
+          "title": "电话管理"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126309.png",
+          "title": "语音输入"
+        },
+        {
+          "img": "../../../img/main/center/icon/1180648.png",
+          "title": "水滴显示"
+        },
+        {
+          "img": "../../../img/main/center/icon/1185229.png",
+          "title": "通讯录"
+        }
+      ]
+    },
+    {
+      "key": "飞行控制中心",
+      "data": [
+        {
+          "img": "../../../img/main/center/icon/1108187.png",
+          "title": "语音控制"
+        },
+        {
+          "img": "../../../img/main/center/icon/1110055.png",
+          "title": "个人信息"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126308.png",
+          "title": "电话管理"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126309.png",
+          "title": "语音输入"
+        },
+        {
+          "img": "../../../img/main/center/icon/1180648.png",
+          "title": "水滴显示"
+        },
+        {
+          "img": "../../../img/main/center/icon/1185229.png",
+          "title": "通讯录"
+        }
+      ]
+    },
+    {
+      "key": "泡泡跑",
+      "data": [
+        {
+          "img": "../../../img/main/center/icon/1108187.png",
+          "title": "语音控制"
+        },
+        {
+          "img": "../../../img/main/center/icon/1110055.png",
+          "title": "个人信息"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126308.png",
+          "title": "电话管理"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126309.png",
+          "title": "语音输入"
+        },
+        {
+          "img": "../../../img/main/center/icon/1180648.png",
+          "title": "水滴显示"
+        },
+        {
+          "img": "../../../img/main/center/icon/1185229.png",
+          "title": "通讯录"
+        }
+      ]
+    },
+    {
+      "key": "财富中心",
+      "data": [
+        {
+          "img": "../../../img/main/center/icon/1108187.png",
+          "title": "语音控制"
+        },
+        {
+          "img": "../../../img/main/center/icon/1110055.png",
+          "title": "个人信息"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126308.png",
+          "title": "电话管理"
+        },
+        {
+          "img": "../../../img/main/center/icon/1126309.png",
+          "title": "语音输入"
+        },
+        {
+          "img": "../../../img/main/center/icon/1180648.png",
+          "title": "水滴显示"
+        },
+        {
+          "img": "../../../img/main/center/icon/1185229.png",
+          "title": "通讯录"
+        }
+      ]
+    }
+  ]
+}

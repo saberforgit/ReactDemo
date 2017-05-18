@@ -13,10 +13,9 @@ class AppStorage {
    */
 
   static get(key) {
-    return AsyncStorage.getItem(key).then((value) => {
-      const jsonValue = JSON.parse(value);
-      return jsonValue;
-    });
+    return AsyncStorage.getItem(key).then((value) => (
+      JSON.parse(value)
+    ));
   }
 
 
@@ -38,7 +37,9 @@ class AppStorage {
    * @returns {Promise<T>|Promise.<TResult>}
    */
   static update(key, value) {
-    return AsyncStorage.get(key).then(item => AsyncStorage.setItem(key, JSON.stringify(typeof value === 'string' ? value : Object.assign({}, item, value))));
+    return AsyncStorage.get(key).then((item) => (
+      AsyncStorage.setItem(key, JSON.stringify(typeof value === 'string' ? value : Object.assign({}, item, value)))
+    ));
   }
 
 

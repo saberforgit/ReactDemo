@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <Navigator
         style={app.root}
-        initialRoute={{ component: Root }}
+        initialRoute={{ component: Main }}
         configureScene={this.configureScene}
         renderScene={this.renderScene}
       />

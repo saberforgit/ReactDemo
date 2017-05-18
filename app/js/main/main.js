@@ -10,6 +10,7 @@ import TabNavigator from 'react-native-tab-navigator';
 const Home = require('./home/home');
 const CenterTab = require('./center/center');
 const Personal = require('./personal/personal');
+const Search = require('./search/search');
 
 class Main extends Component {
 
@@ -64,6 +65,20 @@ class Main extends Component {
             onPress={() => this.setState({ selectedTab: 'Application' })}
           >
             <CenterTab navigator={this.props.navigator} />
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'search'}
+            title="search"
+            titleStyle={styles.tabText}
+            selectedTitleStyle={styles.selectedTabText}
+            renderIcon={() => <Image style={styles.icon} source={require('../../img/main/app_nor.png')} />}
+            renderSelectedIcon={() => (<Image
+              style={styles.icon}
+              source={require('../../img/main/app_press.png')}
+            />)}
+            onPress={() => this.setState({ selectedTab: 'search' })}
+          >
+            <Search navigator={this.props.navigator} />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === '我的'}

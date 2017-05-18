@@ -1,45 +1,41 @@
 /**
  * Created by wangxf on 2017/5/10.
  */
-import React, {Component} from 'react';
-import {} from 'react-native';
-class Http extends Component {
-    static get(url, responseType, callback) {
-        var opts = {
-            method: "GET"
+class Http {
+  static get(url, responseType, callback) {
+    const opts = {
+      method: 'GET'
+    };
+    fetch(url, opts)
+      .then((response) => {
+        switch (responseType) {
+          case 'JSON':
+            return response.json();
+          case 'TEXT':
+            return response.text();
+          default:
+            return response.json();
         }
-        fetch(url, opts)
-            .then((response) => {
-                switch (responseType) {
-                    case 'JSON':
-                        return response.json();
-                        break;
-                    case 'TEXT':
-                        return response.text();
-                        break;
-                    default:
-                        return response.json();
-                }
-            })
-            .then((responseData) => {
-                callback(responseData);
-            })
-            .catch((error) => {
-                callback(error);
-            })
-    }
+      })
+      .then((responseData) => {
+        callback(responseData);
+      })
+      .catch((error) => {
+        callback(error);
+      });
+  }
 
-    static getJson(url, callback) {
-        this.get(url, 'JSON', callback);
-    }
+  static getJson(url, callback) {
+    this.get(url, 'JSON', callback);
+  }
 
-    static getText(url, callback) {
-        this.get(url, 'TEXT', callback);
-    }
+  static getText(url, callback) {
+    this.get(url, 'TEXT', callback);
+  }
 
-    post() {
+  post() {
 
-    }
+  }
 }
 
 module.exports = Http;

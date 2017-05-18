@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   Image,
   ListView,
   TouchableHighlight,
   StyleSheet,
   Text,
-  Alert,
-  ScrollView,
-  SectionList,
   View,
-  TouchableNativeFeedback
 } from 'react-native';
-var MasonryFirst = require('../main/center/masonry');
+
+const MasonryFirst = require('../main/center/masonry');
+
 class MenuList_N extends Component {
 
   constructor(props) {
     super(props);
     // 初始状态
-    var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       dataSource: ds.cloneWithRows(this.props.data),
     };
-  }
-
-  render() {
-    return (
-      <ListView
-        initialListSize={6}
-        contentContainerStyle={styles.list_tab}
-        dataSource={this.state.dataSource}
-        renderRow={this._renderRow.bind(this)}
-      />
-    );
   }
 
   _renderRow(menu) {
@@ -55,7 +41,17 @@ class MenuList_N extends Component {
       component: MasonryFirst,
     });
   }
-};
+  render() {
+    return (
+      <ListView
+        initialListSize={6}
+        contentContainerStyle={styles.list_tab}
+        dataSource={this.state.dataSource}
+        renderRow={this._renderRow.bind(this)}
+      />
+    );
+  }
+}
 const styles = StyleSheet.create({
   continers: {
     flex: 1,

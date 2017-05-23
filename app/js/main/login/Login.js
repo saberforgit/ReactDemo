@@ -130,7 +130,7 @@ const login = StyleSheet.create({
   },
   input_submit_text: {
     fontSize: 22,
-    color: 'white'
+    color: 'white',
   }
 });
 module.exports = Login;

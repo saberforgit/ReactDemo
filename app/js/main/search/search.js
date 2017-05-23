@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Alert,
   Image,
-  CellView,
   ListView,
   SectionList,
   StyleSheet,
+  Dimensions,
   TouchableHighlight
 } from 'react-native';
 
@@ -66,14 +65,6 @@ class SearchPager extends Component {
             {
               'img': require('../../../img/main/center/icon/1126309.png'),
               'title': '语音输入'
-            },
-            {
-              'img': require('../../../img/main/center/icon/1180648.png'),
-              'title': '水滴显示'
-            },
-            {
-              'img': require('../../../img/main/center/icon/1185229.png'),
-              'title': '通讯录'
             }
           ]]
         },
@@ -85,9 +76,14 @@ class SearchPager extends Component {
               'title': '语音控制'
             },
             {
-              'img': require('../../../img/main/center/icon/1110055.png'),
-              'title': '个人信息'
-            },
+              'img': require('../../../img/main/center/icon/1185229.png'),
+              'title': '通讯录'
+            }
+          ]]
+        },
+        {
+          "key": "财富中心",
+          "data": [[
             {
               'img': require('../../../img/main/center/icon/1126308.png'),
               'title': '电话管理'
@@ -99,15 +95,54 @@ class SearchPager extends Component {
             {
               'img': require('../../../img/main/center/icon/1180648.png'),
               'title': '水滴显示'
-            },
-            {
-              'img': require('../../../img/main/center/icon/1185229.png'),
-              'title': '通讯录'
             }
           ]]
         },
         {
-          "key": "财富中心",
+          "key": "财富中心1",
+          "data": [[
+            {
+              'img': require('../../../img/main/center/icon/1126308.png'),
+              'title': '电话管理'
+            },
+            {
+              'img': require('../../../img/main/center/icon/1126309.png'),
+              'title': '语音输入'
+            },
+            {
+              'img': require('../../../img/main/center/icon/1180648.png'),
+              'title': '水滴显示'
+            }
+          ]]
+        },
+        {
+          "key": "财富中心2",
+          "data": [[
+            {
+              'img': require('../../../img/main/center/icon/1126308.png'),
+              'title': '电话管理'
+            },
+            {
+              'img': require('../../../img/main/center/icon/1126309.png'),
+              'title': '语音输入'
+            },
+            {
+              'img': require('../../../img/main/center/icon/1180648.png'),
+              'title': '水滴显示'
+            }
+          ]]
+        },
+        {
+          "key": "飞行控制中心1",
+          "data": [[
+            {
+              'img': require('../../../img/main/center/icon/1108187.png'),
+              'title': '语音控制'
+            }
+          ]]
+        },
+        {
+          "key": "飞行控制中心2",
           "data": [[
             {
               'img': require('../../../img/main/center/icon/1108187.png'),
@@ -124,14 +159,19 @@ class SearchPager extends Component {
             {
               'img': require('../../../img/main/center/icon/1126309.png'),
               'title': '语音输入'
+            }
+          ]]
+        },
+        {
+          "key": "飞行控制中心3",
+          "data": [[
+            {
+              'img': require('../../../img/main/center/icon/1126308.png'),
+              'title': '电话管理'
             },
             {
-              'img': require('../../../img/main/center/icon/1180648.png'),
-              'title': '水滴显示'
-            },
-            {
-              'img': require('../../../img/main/center/icon/1185229.png'),
-              'title': '通讯录'
+              'img': require('../../../img/main/center/icon/1126309.png'),
+              'title': '语音输入'
             }
           ]]
         }
@@ -183,6 +223,7 @@ class SearchPager extends Component {
 }
 const styles = StyleSheet.create({
   list: {
+    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -190,15 +231,16 @@ const styles = StyleSheet.create({
   },
   row: {
     justifyContent: 'center',
-    width: 90,
-    height: 90,
+    marginTop: 5,
+    marginBottom: 3,
+    width: Dimensions.get('window').width * 0.25,
     alignItems: 'center',
     backgroundColor: '#FFFFFF'
   },
   row_img: {
     width: 50,
     height: 50,
-    margin: 5,
+    margin: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -217,7 +259,7 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    marginTop: 2,
+    marginTop: 1,
     fontWeight: 'bold'
   },
 });

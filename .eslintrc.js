@@ -10,7 +10,7 @@ module.exports = {
     "import"
   ],
   "rules": {
-    "eslint-disable-line": "global-require",
+    "global-require": 0,
     "react/require-extension": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "linebreak-style": ["error", "windows"],

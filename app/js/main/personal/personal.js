@@ -3,22 +3,73 @@
  */
 import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Image,
+    StyleSheet,
+    View,
+    Image,
+    ToastAndroid,
+    TouchableOpacity,
+    Alert,
+    Text
 } from 'react-native';
 
+import Camera from './Camera';
+
 class Personal extends Component {
+
+  constructor(props) {
+    super(props);
+    this.takePhoto = this.takePhoto.bind(this);
+    this.state = {
+      header_img: null
+    };
+  }
+
+  takePhoto() {
+    const self = this;
+    this.props.navigator.push({
+      component: Camera,
+      passProps: {
+        getPhoto(image) {
+          self.setState({
+            header_img: image.path
+          });
+        },
+      }
+    });
+  }
+
   render() {
     return (
-      <Image style={personal.img_bg} source={require('../../../img/main/person_bg.jpg')} />
+      <View style={personal.container}>
+        <TouchableOpacity style={personal.header} onPress={this.takePhoto}>
+          <Image style={personal.header_img} source={{ uri: this.state.header_img }} />
+          <Text style={personal.header_name}>wangxf</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
 
 const personal = StyleSheet.create({
-  img_bg: {
-    width: '100%',
-    height: '100%'
+  container: {
+    flex: 1,
+  },
+  header: {
+    height: 60,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  header_img: {
+    margin: 5,
+    height: 50,
+    width: 50,
+    borderRadius: 25
+  },
+  header_name: {
+    margin: 5,
+    textAlign: 'center',
   }
 });
 module.exports = Personal;

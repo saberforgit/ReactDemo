@@ -95,7 +95,7 @@ class Main extends Component {
             />)}
             onPress={() => this.setState({ selectedTab: '我的' })}
           >
-            <Personal />
+            <Personal navigator={this.props.navigator}/>
           </TabNavigator.Item>
         </TabNavigator>
       </View>

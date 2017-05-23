@@ -1,0 +1,24 @@
+{
+  "personal": [
+    {
+      "img": "file:///storage/emulated/0/img/1110055.png",
+      "title": "个人信息"
+    },
+    {
+      "img": "file:///storage/emulated/0/img/1180648.png",
+      "title": "地址管理"
+    },
+    {
+      "img": "file:///storage/emulated/0/img/1126309.png",
+      "title": "语音管理"
+    },
+    {
+      "img": "file:///storage/emulated/0/img/1126308.png",
+      "title": "电话管理"
+    },
+    {
+      "img": "file:///storage/emulated/0/img/1185229.png",
+      "title": "联系人"
+    }
+  ]
+}

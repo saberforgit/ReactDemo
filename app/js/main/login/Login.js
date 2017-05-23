@@ -3,12 +3,13 @@
  */
 import React, { Component } from 'react';
 import {
-    View,
-    Image,
-    Text,
-    TextInput,
-    TouchableNativeFeedback,
-    StyleSheet
+  View,
+  Image,
+  Text,
+  TextInput,
+  Animated,
+  TouchableNativeFeedback,
+  StyleSheet
 } from 'react-native';
 import Main from '../main';
 
@@ -17,12 +18,19 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fadeAnimation: new Animated.Value(1),
       name: '',
       passwd: ''
     };
   }
 
   _onPressButton() {
+    // Animated.timing(
+    //   this.state.fadeAnimation,
+    //   {
+    //     toValue: 0
+    //   }
+    // ).start();
     this.props.navigator.push({
       component: Main,
       passProps: {
@@ -66,14 +74,15 @@ class Login extends Component {
                 onSubmitEditing={this._onPressButton.bind(this)}
               />
             </View>
-            <TouchableNativeFeedback
+            <Animated.View
+              style={{ opacity: this.state.fadeAnimation }}
               background={TouchableNativeFeedback.SelectableBackground()}
-              onPress={this._onPressButton.bind(this)}
-            >
-              <View style={login.input_submmit}>
-                <Text style={login.input_submit_text}>登陆</Text>
-              </View>
-            </TouchableNativeFeedback>
+            ><TouchableNativeFeedback onPress={this._onPressButton.bind(this)}>
+                <View style={login.input_submmit}>
+                  <Text style={login.input_submit_text}>登陆</Text>
+                </View>
+              </TouchableNativeFeedback>
+            </Animated.View>
           </View>
         </View>
       </Image>
@@ -112,12 +121,12 @@ const login = StyleSheet.create({
   input_name: {
     flex: 1,
     paddingLeft: 15,
-        // borderBottomWidth: 1,
+    // borderBottomWidth: 1,
   },
   input_passwd: {
     flex: 1,
     paddingLeft: 15,
-        // borderBottomWidth: 1,
+    // borderBottomWidth: 1,
   },
   input_submmit: {
     margin: 5,

@@ -7,9 +7,7 @@ import {
   View,
   Image,
   ToastAndroid,
-  ListView,
   TouchableOpacity,
-  Alert,
   Text
 } from 'react-native';
 

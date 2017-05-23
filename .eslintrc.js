@@ -176,6 +176,11 @@ module.exports = {
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
     "react/wrap-multilines": 0,
+    "react/jsx-no-bind": [1, {
+      "ignoreRefs": true || false,
+      "allowArrowFunctions": true || false,
+      "allowBind": true || false
+    }]
   },
 
   // 这里设置可能用到的全局变量

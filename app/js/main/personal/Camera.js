@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-    Image,
-    StatusBar,
-    StyleSheet,
-    TouchableOpacity,
-    Alert,
-    View,
+  Image,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Camera from 'react-native-camera';
 
@@ -74,21 +73,21 @@ export default class Example extends React.Component {
   takePicture = () => {
     if (this.camera) {
       this.camera.capture()
-                .then((data) => {
-                  if (this.props.getPhoto) {
-                    this.props.getPhoto(data);
-                  }
-                  this.props.navigator.pop();
-                })
-                .catch(err => console.error(err));
+        .then((data) => {
+          if (this.props.getPhoto) {
+            this.props.getPhoto(data);
+          }
+          this.props.navigator.pop();
+        })
+        .catch(err => console.error(err));
     }
   }
 
   startRecording = () => {
     if (this.camera) {
       this.camera.capture({ mode: Camera.constants.CaptureMode.video })
-                .then((data) => console.log(data))
-                .catch(err => console.error(err));
+        .then((data) => console.log(data))
+        .catch(err => console.error(err));
       this.setState({
         isRecording: true
       });
@@ -209,41 +208,41 @@ export default class Example extends React.Component {
         </View>
         <View style={[styles.overlay, styles.bottomOverlay]}>
           {
-                        !this.state.isRecording
-                        &&
-                        <TouchableOpacity
-                          style={styles.captureButton}
-                          onPress={this.takePicture.bind(this)}
-                        >
-                          <Image
-                            source={require('./assets/ic_photo_camera_36pt.png')}
-                          />
-                        </TouchableOpacity>
-                        ||
-                        null
-                    }
+            !this.state.isRecording
+            &&
+            <TouchableOpacity
+              style={styles.captureButton}
+              onPress={this.takePicture.bind(this)}
+            >
+              <Image
+                source={require('./assets/ic_photo_camera_36pt.png')}
+              />
+            </TouchableOpacity>
+            ||
+            null
+          }
           <View style={styles.buttonsSpace} />
           {
-                        !this.state.isRecording
-                        &&
-                        <TouchableOpacity
-                          style={styles.captureButton}
-                          onPress={this.startRecording}
-                        >
-                          <Image
-                            source={require('./assets/ic_videocam_36pt.png')}
-                          />
-                        </TouchableOpacity>
-                        ||
-                        <TouchableOpacity
-                          style={styles.captureButton}
-                          onPress={this.stopRecording}
-                        >
-                          <Image
-                            source={require('./assets/ic_stop_36pt.png')}
-                          />
-                        </TouchableOpacity>
-                    }
+            !this.state.isRecording
+            &&
+            <TouchableOpacity
+              style={styles.captureButton}
+              onPress={this.startRecording}
+            >
+              <Image
+                source={require('./assets/ic_videocam_36pt.png')}
+              />
+            </TouchableOpacity>
+            ||
+            <TouchableOpacity
+              style={styles.captureButton}
+              onPress={this.stopRecording}
+            >
+              <Image
+                source={require('./assets/ic_stop_36pt.png')}
+              />
+            </TouchableOpacity>
+          }
         </View>
       </View>
     );

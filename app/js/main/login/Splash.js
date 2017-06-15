@@ -13,8 +13,6 @@ import {
 import ViewPager from 'react-native-viewpager';
 import Login from './Login';
 
-
-
 class Splash extends Component {
 
   constructor(props) {

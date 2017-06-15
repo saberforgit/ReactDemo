@@ -5,13 +5,30 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Navigator } from 'react-native-deprecated-custom-components';
-import Root from './js/root';
-import Splash from './js/main/login/Splash';
-import Main from './js/main/main';
-import Center from './js/main/center/center';
+import Laucher from '../js/laucher';
+import Splash from '../js/main/login/Splash';
+import Main from '../js/main/main';
+import Center from '../js/main/center/center';
+
+let initialRoute = {
+  component: Laucher,
+  name: 'Laucher'
+}
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    console.info('in App...');
+    // if (props.isLoginIn) {
+    //   initialRoute = {
+    //     component: Main,
+    //     name: 'Main'
+    //   };
+    // }
+  }
 
   /**
    * 配置场景动画
@@ -40,7 +57,7 @@ class App extends Component {
     return (
       <Navigator
         style={app.root}
-        initialRoute={{ component: Root }}
+        initialRoute={initialRoute}
         configureScene={this.configureScene}
         renderScene={this.renderScene}
       />
@@ -48,9 +65,16 @@ class App extends Component {
   }
 
 }
+
 const app = StyleSheet.create({
   root: {
     flex: 1,
   }
 });
-module.exports = App;
+
+function select(store) {
+  return {
+    isLoginIn: store.loginStore.isLoginIn
+  };
+}
+export default connect(select)(App);

@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   ToolbarAndroid,
-  ToastAndroid,
   Alert,
   Image
 } from 'react-native';

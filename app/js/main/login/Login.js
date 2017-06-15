@@ -6,12 +6,16 @@ import {
   View,
   Image,
   Text,
+  Alert,
   TextInput,
   Animated,
   TouchableNativeFeedback,
   StyleSheet
 } from 'react-native';
+import { connect } from 'react-redux';
+import { logIn } from '../../redux/action/login_ac';
 import Main from '../main';
+import ProgressBar from '../../model/ProgressBar';
 
 class Login extends Component {
 
@@ -24,7 +28,15 @@ class Login extends Component {
     };
   }
 
-  _onPressButton() {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.isLoginIn != this.props.isLoginIn && nextProps.isLoginIn === true) {
+      this._onPressButton();
+      return false;
+    }
+    return true;
+  }
+
+  _onPressButton = () => (
     // Animated.timing(
     //   this.state.fadeAnimation,
     //   {
@@ -37,11 +49,26 @@ class Login extends Component {
         name: this.state.name,
         passwd: this.state.passwd
       },
-    });
+    })
+  )
+
+  _onRedux() {
+    if (!this.state.name || !this.state.passwd) {
+      Alert.alert(null, '用户名或者密码为空..');
+      return;
+    }
+    let opt = {
+      name: this.state.name,
+      passwd: this.state.passwd
+    };
+    this.props.dispatch(logIn(opt));
   }
 
   render() {
     const path = { src: require('../../../img/login_bg.jpg') };
+    if (this.state.status === 'logining') {
+      return (<ProgressBar />);
+    }
     return (
       <Image source={path.src} style={login.bg}>
         <View style={login.container}>
@@ -71,13 +98,14 @@ class Login extends Component {
                 keyboardType="numeric"
                 underlineColorAndroid="transparent"
                 secureTextEntry={true}
-                onSubmitEditing={this._onPressButton.bind(this)}
+                onSubmitEditing={this._onPressButton}
               />
             </View>
             <Animated.View
               style={{ opacity: this.state.fadeAnimation }}
               background={TouchableNativeFeedback.SelectableBackground()}
-            ><TouchableNativeFeedback onPress={this._onPressButton.bind(this)}>
+            >
+              <TouchableNativeFeedback onPress={this._onRedux.bind(this)}>
                 <View style={login.input_submmit}>
                   <Text style={login.input_submit_text}>登陆</Text>
                 </View>
@@ -89,6 +117,14 @@ class Login extends Component {
     );
   }
 
+}
+
+function select(store) {
+  return {
+    isLoginIn: store.loginStore.isLoginIn,
+    user: store.loginStore.user,
+    status: store.loginStore.status
+  }
 }
 
 const login = StyleSheet.create({
@@ -142,4 +178,4 @@ const login = StyleSheet.create({
     color: 'white',
   }
 });
-module.exports = Login;
+export default connect(select)(Login);

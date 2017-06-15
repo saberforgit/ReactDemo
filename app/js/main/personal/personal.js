@@ -1,7 +1,7 @@
 /**
  * Created by wangxf on 2017/5/8.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
@@ -54,10 +54,10 @@ class Personal extends Component {
         return (
             <View style={personal.container}>
                 <TouchableOpacity style={personal.header} onPress={this.takePhoto}>
-                    <Image style={personal.header_img} source={{uri: this.state.header_img}}/>
+                    <Image style={personal.header_img} source={{ uri: this.state.header_img }} />
                     <Text style={personal.header_name}>wangxf</Text>
                 </TouchableOpacity>
-                <PersonalList data={this.state.data}/>
+                <PersonalList data={this.state.data} />
             </View>
         );
     }

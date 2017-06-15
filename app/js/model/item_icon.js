@@ -21,7 +21,7 @@ class IconItem extends Component {
           <Text style={item.item_text}>{this.props.text}</Text>
         </View>
         <View style={item.item_img_view}>
-          <Image source={require('../../img/model/right_ios.png')} style={item.item_img} />
+          <Image source={require('../../img/model/right_android.png')} style={item.item_img} />
         </View>
       </View>
     );
